@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <title>Ancient Art Gallery</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    <section class="welcome-section" id="welcome">
+        <div class="welcome-text">
+            <h1>WELCOME TO ANCIENT ART</h1>
+            <button onclick="scrollToGallery()">Enter Gallery</button>
+        </div>
+    </section>
+</body>
+</html>
+
+    
+    <header>
+        <h1>Ancient Art</h1>
+    </header>
+
+    
+    <div class="full-img-box" id="fullImgBox">
+        <span class="close-btn" onclick="closeFullImg()">×</span>
+        <img id="fullImg" src="" alt="Full View">
+        <div class="prev" onclick="changeImg(-1)">&#10094;</div>
+        <div class="next" onclick="changeImg(1)">&#10095;</div>
+    </div>
+
+    
+    <div class="img-gallery">
+        <div class="img-container">
+            <img src="images/img1.jpg" alt="Bushman Cave Painting" onclick="openFullImg(0)">
+            <p class="img-caption">Bushman Cave Painting</p>
+        </div>
+        <div class="img-container">
+            <img src="images/img2.jpg" alt="Ancient Hieroglyphics" onclick="openFullImg(1)">
+            <p class="img-caption">Ancient Hieroglyphics</p>
+        </div>
+        <div class="img-container">
+            <img src="images/img3.jpg" alt="Old Engraved Illustration" onclick="openFullImg(2)">
+            <p class="img-caption">Old Engraved Illustration</p>
+        </div>
+        <div class="img-container">
+            <img src="images/img4.jpg" alt="Egypt Western Desert, Gilf Kebir" onclick="openFullImg(3)">
+            <p class="img-caption">Egypt Western Desert, Gilf Kebir</p>
+        </div>
+        <div class="img-container">
+            <img src="images/img5.jpg" alt="Pictographs Of Hands" onclick="openFullImg(4)">
+            <p class="img-caption">Pictographs Of Hands</p>
+        </div>
+        <div class="img-container">
+            <img src="images/img6.jpg" alt="Cave Painting" onclick="openFullImg(5)">
+            <p class="img-caption">Cave Painting</p>
+        </div>
+        <div class="img-container">
+            <img src="images/img7.jpg" alt="Tete D'un Boeuf et rennes peint a lascaux" onclick="openFullImg(6)">
+            <p class="img-caption">Tete D'un Boeuf et rennes peint a lascaux</p>
+        </div>
+    </div>
+
+    <script>
+        var imgIndex = 0;
+        var images = document.querySelectorAll(".img-gallery img");
+        var fullImg = document.getElementById("fullImg");
+
+        
+        function openFullImg(index) {
+            imgIndex = index;
+            fullImg.src = images[imgIndex].src;
+            document.getElementById("fullImgBox").style.display = "flex";
+        }
+
+        
+        function changeImg(direction) {
+            imgIndex = (imgIndex + direction + images.length) % images.length;
+            fullImg.src = images[imgIndex].src;
+        }
+
+        
+        function closeFullImg() {
+            document.getElementById("fullImgBox").style.display = "none";
+        }
+
+        
+        function scrollToGallery() {
+            document.querySelector('.img-gallery').scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
